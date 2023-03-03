@@ -1,12 +1,14 @@
+package app;
+
 public class ToVisitListApp {
-
+    private final static String appName = "model.ToVisitList v0.4";
     public static void main(String[] args) {
-
-        final String appName = "ToVisitList v0.3";
 
         System.out.println(appName);
         ToVisitListControl toVisitListControl = new ToVisitListControl();
         toVisitListControl.controlLoop();
 
     }
+
+
 }
