@@ -38,8 +38,6 @@ public class DataReader {
     public Monument readAndAddMonument(){
         System.out.println("Title");
         String title = sc.nextLine();
-        System.out.println("City");
-        String city = sc.nextLine();
         System.out.println("Country");
         String country = sc.nextLine();
         System.out.println("Is it on UNESCO list? \n yes or no");

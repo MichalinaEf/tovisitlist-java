@@ -50,15 +50,16 @@ public class City extends Place{
 
     @Override
     public String toString() {
-        return getTitle() + ", " + city + " " + capital + printInfo(capital) + " in "  + getCountry();
+        return getTitle() + ", " + city + " " + printInfo(capital) + getCountry();
     }
 
 
     private String printInfo (boolean capital){
-        String isCapital = null;
+        String isCapital = "";
         if (capital){
             isCapital = ", the capital city of";
-        }
+        } else
+            isCapital = "in ";
         return isCapital;
     }
 }

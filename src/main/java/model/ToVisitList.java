@@ -19,7 +19,7 @@ public class ToVisitList {
         int countCities = 0;
         for (int i = 0; i < placesNumber; i++) {
             if(places[i] instanceof City){
-                places[i].toString();
+                System.out.println(places[i].toString());
                 countCities++;
             }
         }
@@ -38,8 +38,8 @@ public class ToVisitList {
     public void printMonumentsToVisit(){
         int countMonuments = 0;
         for (int i = 0; i < placesNumber; i++) {
-            if(places[i] instanceof City){
-                places[i].toString();
+            if(places[i] instanceof Monument){
+                System.out.println(places[i].toString());
                 countMonuments++;
             }
         }
@@ -54,11 +54,11 @@ public class ToVisitList {
         } else
             System.out.println("Sorry, no more space on your list, you should plan your trip now");
     }
-    public void printNatureSpotsToVisit(){
+    public void printNaturalSpotsToVisit(){
         int countNature = 0;
         for (int i = 0; i < placesNumber; i++) {
-            if(places[i] instanceof City){
-                places[i].toString();
+            if(places[i] instanceof NaturalSpot){
+                System.out.println(places[i].toString());
                 countNature++;
             }
         }

@@ -58,11 +58,11 @@ public class ToVisitListControl {
     private void printOptions() {
         System.out.println("Please choose an option:");
         System.out.println(EXIT + " - to exit the program");
-        System.out.println(ADD_NEW_CITY + " - to add new place to your ToVisitList");
+        System.out.println(ADD_NEW_CITY + " - to add new city to your ToVisitList");
+        System.out.println(ADD_NEW_MONUMENT + " - to add new monument to your ToVisitList");
+        System.out.println(ADD_NEW_NATURAL_SPOT + " - to add new natural spot to your ToVisitList");
         System.out.println(PRINT_CITIES_ON_YOUR_TO_VISIT_LIST + " - to see cities on your ToVisitList and plan new journey :)");
-        System.out.println(ADD_NEW_MONUMENT + " - to add new place to your ToVisitList");
         System.out.println(PRINT_MONUMENTS_ON_YOUR_TO_VISIT_LIST + " - to see monuments on your ToVisitList and plan new journey :)");
-        System.out.println(ADD_NEW_NATURAL_SPOT + " - to add new place to your ToVisitList");
         System.out.println(PRINT_NATURAL_SPOTS_ON_YOUR_TO_VISIT_LIST + " - to see natural spots on your ToVisitList and plan new journey :)");
     }
 
@@ -88,7 +88,7 @@ public class ToVisitListControl {
     }
 
     private void printNaturalSpots() {
-        toVisitList.printNatureSpotsToVisit();
+        toVisitList.printNaturalSpotsToVisit();
     }
 
 
