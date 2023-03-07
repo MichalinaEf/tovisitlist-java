@@ -59,9 +59,9 @@ public class City extends Place{
     private String printInfo (boolean capital){
         String isCapital = "";
         if (capital){
-            isCapital = ", the capital city of";
+            isCapital = ", the capital city of ";
         } else
-            isCapital = "in ";
+            isCapital = " in ";
         return isCapital;
     }
 

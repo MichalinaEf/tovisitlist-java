@@ -1,32 +1,37 @@
 package app;
 
+import exception.NoSuchOptionException;
+import io.ConsolePrinter;
 import io.DataReader;
 import model.*;
 
+import java.util.InputMismatchException;
+
 public class ToVisitListControl {
     private DataReader dataReader = new DataReader();
+    private ConsolePrinter printer = new ConsolePrinter();
     private ToVisitList toVisitList = new ToVisitList();
 
     public void controlLoop(){
         Option option;
-
         do {
             printOptions();
-            option = Option.createFromInt(dataReader.getInt());
+            option = getOption();
             switch (option){
-                case ADD_NEW_CITY:
-                    addNewCity();
+                case ADD_CITY:
+                    addCity();
+
                     break;
                 case PRINT_CITIES_ON_YOUR_TO_VISIT_LIST:
                     printCities();
                     break;
-                case ADD_NEW_MONUMENT:
-                    addNewMonument();
+                case ADD_MONUMENT:
+                    addMonument();
                     break;
                 case PRINT_MONUMENTS_ON_YOUR_TO_VISIT_LIST:
                     printMonuments();
                     break;
-                case ADD_NEW_NATURAL_SPOT:
+                case ADD_NATURAL_SPOT:
                     addNewNaturalSpot();
                     break;
                 case PRINT_NATURAL_SPOTS_ON_YOUR_TO_VISIT_LIST:
@@ -45,6 +50,21 @@ public class ToVisitListControl {
         while (option != Option.EXIT);
     }
 
+    private Option getOption() {
+        boolean optionOk = false;
+        Option option = null;
+        while (!optionOk){
+            try {
+                option=Option.createFromInt(dataReader.getInt());
+                optionOk=true;
+            } catch (NoSuchOptionException e) {
+                System.out.println(e.getMessage() + ", please try again");
+            } catch (InputMismatchException e){
+                System.out.println("Provided value is not a number");
+            }
+        }
+        return option;
+    }
 
 
     private void printOptions() {
@@ -54,33 +74,56 @@ public class ToVisitListControl {
         }
     }
 
-    private void addNewCity() {
-        City city = dataReader.readAndAddCity();
-        toVisitList.addCity(city);
+    private void addCity() {
+        try {
+            City city = dataReader.readAndAddCity();
+            toVisitList.addCity(city);
+        } catch (InputMismatchException e){
+            System.out.println("New position couldn't be created, wrong data");
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Limit on your ToVisitList was achieved, you should start travelling!");
+        }
+
     }
 
     private void printCities() {
-        toVisitList.printCitiesToVisit();
+        Place[] places = toVisitList.getPlaces();
+        printer.printCitiesToVisit(places);
     }
-    private void addNewMonument() {
-        Monument monument = dataReader.readAndAddMonument();
-        toVisitList.addMonument(monument);
+    private void addMonument() {
+        try {
+            Monument monument = dataReader.readAndAddMonument();
+            toVisitList.addMonument(monument);
+        } catch (InputMismatchException e){
+            System.out.println("New position couldn't be created, wrong data");
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Limit on your ToVisitList was achieved, you should start travelling!");
+        }
     }
 
     private void printMonuments() {
-        toVisitList.printMonumentsToVisit();
+        Place[] places = toVisitList.getPlaces();
+        printer.printMonumentsToVisit(places);
     }
     private void addNewNaturalSpot() {
-        NaturalSpot naturalSpot = dataReader.readAndAddNature();
-        toVisitList.addNature(naturalSpot);
+        try {
+            NaturalSpot naturalSpot = dataReader.readAndAddNaturalSpot();
+            toVisitList.addNaturalSpot(naturalSpot);
+        } catch (InputMismatchException e){
+            System.out.println("New position couldn't be created, wrong data");
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Limit on your ToVisitList was achieved, you should start travelling!");
+        }
     }
 
     private void printNaturalSpots() {
-        toVisitList.printNaturalSpotsToVisit();
+        Place[] places = toVisitList.getPlaces();
+        printer.printNaturalSpotsToVisit(places);
     }
 
     private void printToVisitList() {
-        toVisitList.printAllPlacesOnToVisitLisit();
+        Place[] places = toVisitList.getPlaces();
+        printer.printAllPlacesOnToVisitList(places);
     }
 
 

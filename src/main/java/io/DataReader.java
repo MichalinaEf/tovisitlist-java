@@ -4,6 +4,8 @@ import model.City;
 import model.Monument;
 import model.NaturalSpot;
 
+import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DataReader {
@@ -15,9 +17,13 @@ public class DataReader {
     }
 
     public int getInt(){
-        int number = sc.nextInt();
-        sc.nextLine();
-        return number;
+        try {
+            return sc.nextInt();
+        } catch (InputMismatchException e) {
+            throw e;
+        }finally {
+            sc.nextLine();
+        }
     }
 
     public City readAndAddCity(){
@@ -27,8 +33,8 @@ public class DataReader {
         String city = sc.nextLine();
         System.out.println("Country");
         String country = sc.nextLine();
-        System.out.println("Is it capital city? \n yes or no");
-        String capitalCityString = sc.nextLine();
+        System.out.println("Is it capital city? \n yes or no?");
+        String capitalCityString = yesOrNoAnswer();
         boolean capital = stringToBoolean(capitalCityString);
 
         return new City(title, city, country,capital);
@@ -41,29 +47,41 @@ public class DataReader {
         System.out.println("Country");
         String country = sc.nextLine();
         System.out.println("Is it on UNESCO list? \n yes or no");
-        String unescoListString = sc.nextLine();
+        String unescoListString = yesOrNoAnswer();
         boolean unescoList = stringToBoolean(unescoListString);
         System.out.println("Is it Wonder of the World? \n yes or no");
-        String wonderOfTheWorldString = sc.nextLine();
+        String wonderOfTheWorldString = yesOrNoAnswer();
         boolean wonderOfTheWorld = stringToBoolean(wonderOfTheWorldString);
 
         return new Monument (title,country,unescoList,wonderOfTheWorld);
     }
 
-    public NaturalSpot readAndAddNature(){
+    public NaturalSpot readAndAddNaturalSpot(){
         System.out.println("Title");
         String title = sc.nextLine();
         System.out.println("Country");
         String country = sc.nextLine();
         System.out.println("Is it on UNESCO list? \n yes or no");
-        String unescoListString = sc.nextLine();
+        String unescoListString = yesOrNoAnswer();
         boolean unescoList = stringToBoolean(unescoListString);
         System.out.println("Is it Natural Wonder of the World? \n yes or no");
-        String naturalWonderOfTheWorldString = sc.nextLine();
+        String naturalWonderOfTheWorldString = yesOrNoAnswer();
         boolean naturalWonderOfTheWorld = stringToBoolean(naturalWonderOfTheWorldString);
 
         return new NaturalSpot(title,country,unescoList,naturalWonderOfTheWorld);
     }
+
+    private String yesOrNoAnswer() {
+        String givenAnswer =sc.nextLine();
+        String answer = givenAnswer.toLowerCase();
+        while (!answer.equals("yes") && !answer.equals("no")) {
+            System.out.println("type 'yes' or 'no'");
+            answer = sc.nextLine();
+            answer.toLowerCase(Locale.US);
+        }
+        return answer;
+    }
+
 
     private boolean stringToBoolean (String receivedData) {
         boolean result = false;
