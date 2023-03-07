@@ -1,7 +1,7 @@
 package app;
 
 public class ToVisitListApp {
-    private final static String appName = "model.ToVisitList v0.4";
+    private final static String appName = "model.ToVisitList v1.0";
     public static void main(String[] args) {
 
         System.out.println(appName);

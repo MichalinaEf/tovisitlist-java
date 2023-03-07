@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public abstract class Place {
 
     private String title;
@@ -33,5 +35,18 @@ public abstract class Place {
 
     private String printInfo(){
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Place that = (Place) o;
+        return Objects.equals(title, that.title) && Objects.equals(country, that.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, country);
     }
 }

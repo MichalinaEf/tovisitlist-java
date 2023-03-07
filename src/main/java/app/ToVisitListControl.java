@@ -4,26 +4,15 @@ import io.DataReader;
 import model.*;
 
 public class ToVisitListControl {
-
-    private static final int EXIT = 0;
-    private static final int ADD_NEW_CITY = 1;
-    private static final int ADD_NEW_MONUMENT = 2;
-    private static final int ADD_NEW_NATURAL_SPOT = 3;
-    private static final int PRINT_CITIES_ON_YOUR_TO_VISIT_LIST = 4;
-    private static final int PRINT_MONUMENTS_ON_YOUR_TO_VISIT_LIST = 5;
-    private static final int PRINT_NATURAL_SPOTS_ON_YOUR_TO_VISIT_LIST = 6;
-
-
     private DataReader dataReader = new DataReader();
-
     private ToVisitList toVisitList = new ToVisitList();
 
     public void controlLoop(){
-        int option;
+        Option option;
 
         do {
             printOptions();
-            option = dataReader.getInt();
+            option = Option.createFromInt(dataReader.getInt());
             switch (option){
                 case ADD_NEW_CITY:
                     addNewCity();
@@ -43,6 +32,9 @@ public class ToVisitListControl {
                 case PRINT_NATURAL_SPOTS_ON_YOUR_TO_VISIT_LIST:
                     printNaturalSpots();
                     break;
+                case PRINT_TOVISITLIST:
+                    printToVisitList();
+                    break;
                 case EXIT:
                     exit();
                     break;
@@ -50,20 +42,16 @@ public class ToVisitListControl {
                     System.out.println("Sorry, there is no option like this, please try again");
             }
         }
-        while (option!=EXIT);
+        while (option != Option.EXIT);
     }
 
 
 
     private void printOptions() {
         System.out.println("Please choose an option:");
-        System.out.println(EXIT + " - to exit the program");
-        System.out.println(ADD_NEW_CITY + " - to add new city to your ToVisitList");
-        System.out.println(ADD_NEW_MONUMENT + " - to add new monument to your ToVisitList");
-        System.out.println(ADD_NEW_NATURAL_SPOT + " - to add new natural spot to your ToVisitList");
-        System.out.println(PRINT_CITIES_ON_YOUR_TO_VISIT_LIST + " - to see cities on your ToVisitList and plan new journey :)");
-        System.out.println(PRINT_MONUMENTS_ON_YOUR_TO_VISIT_LIST + " - to see monuments on your ToVisitList and plan new journey :)");
-        System.out.println(PRINT_NATURAL_SPOTS_ON_YOUR_TO_VISIT_LIST + " - to see natural spots on your ToVisitList and plan new journey :)");
+        for (Option option:Option.values()) {
+            System.out.println(option);
+        }
     }
 
     private void addNewCity() {
@@ -90,6 +78,11 @@ public class ToVisitListControl {
     private void printNaturalSpots() {
         toVisitList.printNaturalSpotsToVisit();
     }
+
+    private void printToVisitList() {
+        toVisitList.printAllPlacesOnToVisitLisit();
+    }
+
 
 
     private void exit() {

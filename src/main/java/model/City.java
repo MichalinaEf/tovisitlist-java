@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class City extends Place{
 
     private String city;
@@ -61,5 +63,19 @@ public class City extends Place{
         } else
             isCapital = "in ";
         return isCapital;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        City city = (City) o;
+        return Objects.equals(city, city.city) && Objects.equals(island, city.island) && capital == city.capital;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), city, island, capital);
     }
 }

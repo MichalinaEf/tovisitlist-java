@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public class ToVisitList {
 
     private static final int maxNumberOfPlacesOnTheList = 1000;
@@ -66,5 +68,27 @@ public class ToVisitList {
             System.out.println("You don't have any natural spots to visit, you must add something to your list!");
         }
     }
+
+    public void printAllPlacesOnToVisitLisit() {
+        int countPlaces = 0;
+        for (int i = 0; i < placesNumber; i++) {
+                System.out.println(places[i].toString());
+                countPlaces++;
+        }
+        if(countPlaces == 0){
+            System.out.println("You don't have any place to visit, you must add something to your list!");
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < placesNumber; i++) {
+            builder.append(places[i]);
+            builder.append("\n");
+        }
+        return builder.toString();
+    }
+
 
 }

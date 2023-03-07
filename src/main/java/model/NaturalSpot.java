@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class NaturalSpot extends Place{
 
     private boolean unescoList;
@@ -36,7 +38,7 @@ public class NaturalSpot extends Place{
     private String printInfo(boolean unescoList, boolean naturalWonderOfTheWorld) {
         String printInfo = "";
         if (unescoList && naturalWonderOfTheWorld) {
-            printInfo = " . It is listed on the UNESCO list and it is Natural Wonder of the World, it seems to be your MUST HAVE to visit!";
+            printInfo = ". It is listed on the UNESCO list and it is Natural Wonder of the World, it seems to be your MUST HAVE to visit!";
         } else if (unescoList && !naturalWonderOfTheWorld) {
             printInfo = " and it is listed on the UNESCO list, you should visit it!";
         } else if (!unescoList && naturalWonderOfTheWorld) {
@@ -44,5 +46,19 @@ public class NaturalSpot extends Place{
         } else
             printInfo = "";
         return printInfo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        NaturalSpot that = (NaturalSpot) o;
+        return unescoList == that.unescoList && naturalWonderOfTheWorld == that.naturalWonderOfTheWorld;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), unescoList, naturalWonderOfTheWorld);
     }
 }
