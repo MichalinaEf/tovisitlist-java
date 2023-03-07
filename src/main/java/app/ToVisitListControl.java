@@ -1,17 +1,33 @@
 package app;
 
+import exception.DataExportException;
+import exception.DataImportException;
 import exception.NoSuchOptionException;
 import io.ConsolePrinter;
 import io.DataReader;
+import io.file.FileManager;
+import io.file.FileManagerBuilder;
 import model.*;
 
 import java.util.InputMismatchException;
 
 public class ToVisitListControl {
-    private DataReader dataReader = new DataReader();
     private ConsolePrinter printer = new ConsolePrinter();
-    private ToVisitList toVisitList = new ToVisitList();
+    private DataReader dataReader = new DataReader(printer);
+    private FileManager fileManager;
+    private ToVisitList toVisitList;
 
+    ToVisitListControl(){
+        fileManager = new FileManagerBuilder(printer, dataReader).build();
+        try {
+            toVisitList = fileManager.importData();
+            System.out.println("Data from the file were imported");
+        } catch (DataImportException e){
+            System.err.println(e.getMessage());
+            System.err.println("New data base were initialized");
+            toVisitList = new ToVisitList();
+        }
+    }
     public void controlLoop(){
         Option option;
         do {
@@ -129,8 +145,14 @@ public class ToVisitListControl {
 
 
     private void exit() {
-        System.out.println("See you soon!");
+        try {
+            fileManager.exportData(toVisitList);
+            System.out.println("Data were successfully imported to the file");
+        } catch (DataExportException e) {
+            System.err.println(e.getMessage());
+        }
         dataReader.close();
+        System.out.println("See you soon!");
     }
 
     private enum Option {

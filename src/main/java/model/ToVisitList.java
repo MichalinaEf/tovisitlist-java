@@ -1,6 +1,8 @@
 package model;
 
-public class ToVisitList {
+import java.io.Serializable;
+
+public class ToVisitList implements Serializable {
 
     private static final int MAX_NUMBER_OF_PLACES_ON_THE_LIST = 1000;
 

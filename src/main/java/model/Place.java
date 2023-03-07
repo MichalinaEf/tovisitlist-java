@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Place {
+public abstract class Place implements Serializable {
 
     private String title;
     private String country;
