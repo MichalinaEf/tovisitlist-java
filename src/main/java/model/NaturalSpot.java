@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 
 public class NaturalSpot extends Place{
+    public static final String TYPE = "Natural Spot";
 
     private boolean unescoList;
     private boolean naturalWonderOfTheWorld;
@@ -29,6 +30,11 @@ public class NaturalSpot extends Place{
         this.naturalWonderOfTheWorld = naturalWonderOfTheWorld;
     }
 
+
+    @Override
+    public String toCsv() {
+        return (TYPE + ";" ) + getTitle()  +";"+ getCountry() +";" + unescoList +";" + naturalWonderOfTheWorld + "";
+    }
 
     @Override
     public String toString() {

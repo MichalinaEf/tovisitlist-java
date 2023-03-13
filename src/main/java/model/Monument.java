@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Monument extends Place{
-
+    public static final String TYPE = "Monument";
         private boolean unescoList;
         private boolean wonderOfTheWorld;
 
@@ -30,7 +30,12 @@ public class Monument extends Place{
         }
 
 
-        @Override
+    @Override
+    public String toCsv() {
+            return (TYPE + ";" ) + getTitle()  +";"+ getCountry() +";" + unescoList +";" + wonderOfTheWorld + "";
+        }
+
+    @Override
         public String toString() {
             return getTitle() + " in " + getCountry() + printInfo(unescoList,wonderOfTheWorld);
         }

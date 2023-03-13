@@ -1,11 +1,13 @@
 package model;
 
+import java.lang.reflect.Type;
 import java.util.Objects;
 
 public class City extends Place{
 
+    public static final String TYPE = "City";
+
     private String city;
-    private String island;
     private boolean capital;
 
     public City(String title, String city, String country, boolean capital) {
@@ -14,17 +16,6 @@ public class City extends Place{
         this.capital = capital;
     }
 
-    public City(String title, String island, String country) {
-        super(title,country);
-        this.island = island;
-    }
-
-    public City(String title, String city, String island, String country, boolean capital) {
-        super(title, country);
-        this.city = city;
-        this.island = island;
-        this.capital = capital;
-    }
 
     public String getCity() {
         return city;
@@ -42,12 +33,10 @@ public class City extends Place{
         this.capital = capital;
     }
 
-    public String getIsland() {
-        return island;
-    }
 
-    public void setIsland(String island) {
-        this.island = island;
+    @Override
+    public String toCsv() {
+        return (TYPE + ";" ) + getTitle() +";" + city +";"+ getCountry() +";" + capital + "";
     }
 
     @Override
@@ -71,11 +60,11 @@ public class City extends Place{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         City city = (City) o;
-        return Objects.equals(city, city.city) && Objects.equals(island, city.island) && capital == city.capital;
+        return Objects.equals(city, city.city) && capital == city.capital;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), city, island, capital);
+        return Objects.hash(super.hashCode(), city, capital);
     }
 }

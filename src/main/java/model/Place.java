@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public abstract class Place implements Serializable {
 
+    public abstract String toCsv();
+
     private String title;
     private String country;
 

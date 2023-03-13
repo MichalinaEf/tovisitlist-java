@@ -17,6 +17,8 @@ public class FileManagerBuilder {
         System.out.println("Please, choose file format");
         FileType fileType = getFileType();
         switch (fileType){
+            case CSV:
+                return new CsvFileManager();
             case SERIAL:
                 return new SerializableFileManager();
             default:

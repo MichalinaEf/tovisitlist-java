@@ -29,7 +29,7 @@ public class ToVisitList implements Serializable {
         addPlace(naturalSpot);
     }
 
-    private void addPlace(Place place){
+    public void addPlace(Place place){
         if(placesNumber>=MAX_NUMBER_OF_PLACES_ON_THE_LIST){
             throw new IndexOutOfBoundsException("Max places on the list exceeded" + MAX_NUMBER_OF_PLACES_ON_THE_LIST);
         }
