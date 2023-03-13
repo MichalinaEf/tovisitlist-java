@@ -12,4 +12,8 @@ This application has been written in Java language.
 I used here all basics of Java:
   - encapsulation, polymorphism, and inheritance;
   - control statements: decision making (if and switch) and loops;
-  - communication with user by the help of Scanner.
+  - communication with user by using Scanner;
+  - possibility to save places in csv File;
+  - possibilty to create user;
+  - connection between list and user by used of Maps.
+  
