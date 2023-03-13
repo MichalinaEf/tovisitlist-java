@@ -1,20 +1,30 @@
 package model;
 
+import exception.PlaceAlreadyExistsException;
+import exception.UserAlreadyExistsException;
+
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ToVisitList implements Serializable {
+    private Map<String, Place> places = new HashMap<>();
+    private Map<String, ToVisitListUser> users = new HashMap<>();
 
-    private static final int MAX_NUMBER_OF_PLACES_ON_THE_LIST = 1000;
+    public Map<String, Place> getPlaces() {
+        return places;
+    }
 
-    private Place[] places = new Place[MAX_NUMBER_OF_PLACES_ON_THE_LIST];
-    private int placesNumber;
+    public Map<String,ToVisitListUser> getUsers(){
+        return users;
+    }
 
-    public Place[] getPlaces() {
-        Place[] result = new Place[placesNumber];
-        for (int i = 0; i < placesNumber; i++) {
-            result[i] = places[i];
-        }
-        return result;
+    public void addUser(ToVisitListUser user){
+        if(users.containsKey(user.getEmail()))
+            throw new UserAlreadyExistsException(
+                    "This email has been already used" + user.getEmail()
+            );
+        users.put(user.getEmail(),user);
     }
 
     public void addCity(City city){
@@ -30,10 +40,19 @@ public class ToVisitList implements Serializable {
     }
 
     public void addPlace(Place place){
-        if(placesNumber>=MAX_NUMBER_OF_PLACES_ON_THE_LIST){
-            throw new IndexOutOfBoundsException("Max places on the list exceeded" + MAX_NUMBER_OF_PLACES_ON_THE_LIST);
+        if(places.containsKey(place.getTitle()))
+            throw new PlaceAlreadyExistsException(
+                    "This places has been already added to your list" + place.getTitle()
+            );
+        places.put(place.getTitle(),place);
+    }
+
+    public boolean removePlace(Place place) {
+        if (places.containsValue(place)) {
+            places.remove(place.getTitle());
+            return true;
+        } else {
+            return false;
         }
-        places[placesNumber]=place;
-        placesNumber++;
     }
 }

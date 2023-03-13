@@ -1,8 +1,6 @@
 package io;
 
-import model.City;
-import model.Monument;
-import model.NaturalSpot;
+import model.*;
 
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -34,6 +32,16 @@ public class DataReader {
         }
     }
 
+    public ToVisitListUser readAndCreateUser(){
+        System.out.println("First name");
+        String firstName = sc.nextLine();
+        System.out.println("Last name");
+        String lastName = sc.nextLine();
+        System.out.println("E-mail address");
+        String email = sc.nextLine();
+        return new ToVisitListUser(firstName,lastName,email);
+    }
+
     public City readAndAddCity(){
         System.out.println("Title");
         String title = sc.nextLine();
@@ -47,7 +55,6 @@ public class DataReader {
 
         return new City(title, city, country,capital);
     }
-
 
     public Monument readAndAddMonument(){
         System.out.println("Title");

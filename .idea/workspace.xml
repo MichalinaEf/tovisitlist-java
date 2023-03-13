@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76572afc-9c74-49e8-9ed4-0df9195bcd38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/exception/InvalidDataException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/file/CsvFileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exception/PlaceAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exception/UserAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/CsvConvertible.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ToVisitListUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/comparator/AlphabeticalCountryComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToVisitList.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ToVisitList.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ToVisitListApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ToVisitListApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/ToVisitListControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ToVisitListControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/file/FileManagerBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/file/FileManagerBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/file/FileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/file/FileType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/ConsolePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/ConsolePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/DataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/file/CsvFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/file/CsvFileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/NaturalSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NaturalSpot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Place.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Place.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/ToVisitList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ToVisitList.java" afterDir="false" />
     </list>
@@ -93,20 +98,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/io/DataReader.java</url>
-          <line>81</line>
-          <properties class="io.DataReader" method="yesOrNoAnswer">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

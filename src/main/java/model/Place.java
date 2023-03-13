@@ -3,9 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Place implements Serializable {
-
-    public abstract String toCsv();
+public abstract class Place implements Serializable, Comparable <Place>, CsvConvertible {
 
     private String title;
     private String country;
@@ -36,10 +34,6 @@ public abstract class Place implements Serializable {
         return title + " in " + country;
     }
 
-    private String printInfo(){
-        return null;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,4 +46,9 @@ public abstract class Place implements Serializable {
     public int hashCode() {
         return Objects.hash(title, country);
     }
+
+    public int compareTo(Place place){
+        return country.compareToIgnoreCase(place.country);
+    }
+
 }

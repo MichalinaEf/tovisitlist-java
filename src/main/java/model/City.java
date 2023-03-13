@@ -16,7 +16,6 @@ public class City extends Place{
         this.capital = capital;
     }
 
-
     public String getCity() {
         return city;
     }
